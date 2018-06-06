@@ -4,25 +4,22 @@
     <main>
       <div class="left-side">
         <span class="title">
-          Welcome to your new project!
+          Bulk Bitly URL Shortener
         </span>
-        <system-information></system-information>
+        <author></author>
       </div>
 
       <div class="right-side">
         <div class="doc">
           <div class="title">Getting Started</div>
           <p>
-            electron-vue comes packed with detailed documentation that covers everything from
-            internal configurations, using the project structure, building your application,
-            and so much more.
+            This application will automatically convert your urls to shortened bitly url based on provided CSV or Excel file.
           </p>
-          <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
         </div>
         <div class="doc">
-          <div class="title alt">Other Documentation</div>
-          <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
-          <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
+          <div class="title alt">Menu</div>
+          <button class="alt" @click="open('https://electron.atom.io/docs/')">Create New Project</button>
+          <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Show Existing Project</button>
         </div>
       </div>
     </main>
@@ -30,11 +27,11 @@
 </template>
 
 <script>
-  import SystemInformation from './LandingPage/SystemInformation'
-
+  import Author from './LandingPage/Author'
+  
   export default {
     name: 'landing-page',
-    components: { SystemInformation },
+    components: { Author },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
@@ -92,7 +89,7 @@
 
   .title {
     color: #2c3e50;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 6px;
   }
@@ -104,15 +101,14 @@
 
   .doc p {
     color: black;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .doc button {
     font-size: .8em;
     cursor: pointer;
     outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
+    padding: 0.75em 1em;
     display: inline-block;
     color: #fff;
     background-color: #4fc08d;
@@ -122,7 +118,7 @@
   }
 
   .doc button.alt {
-    color: #42b983;
+    color: #333;
     background-color: transparent;
   }
 </style>
