@@ -1,37 +1,42 @@
 <template>
-  <div id="wrapper">
-    <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
-    <main>
-      <div class="left-side">
-        <span class="title">
-          Bulk Bitly URL Shortener
-        </span>
-        <author></author>
-      </div>
-
-      <div class="right-side">
-        <div class="doc">
-          <div class="title">Getting Started</div>
-          <p>
-            This application will automatically convert your urls to shortened bitly url based on provided CSV or Excel file.
-          </p>
-        </div>
-        <div class="doc">
-          <div class="title alt">Menu</div>
-          <button class="alt" @click="open('https://electron.atom.io/docs/')">Create New Project</button>
-          <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Show Existing Project</button>
+  <div class="container">
+    <div class="row header-logo">
+      <div class="col d-flex justify-content-center align-items-center">
+        <img id="logo" src="~@/assets/pipe-96.png" alt="electron-vue">
+        <div>
+          <p class="app-title">Bulking Conversion App</p>
+          <p class="app-sub">Simple App to mass shorten urls</p>
         </div>
       </div>
-    </main>
+    </div>
+    <div class="row">
+      <div class="cold col-md-8 d-flex flex-column justify-content-start">
+        <router-link :to="{name: 'create-project'}">
+          <big-button faName="fa-plus-circle" text="Create new"></big-button>
+        </router-link>
+      </div>
+      <div class="col col-md-4">
+        <head-title title="Last Projects" faName="fa-clock-o"></head-title>
+        <ul>
+          <li>Project 1</li>
+          <li>Project 2</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <author></author>
+    </div>
   </div>
 </template>
 
 <script>
-  import Author from './LandingPage/Author'
+  import Author from './Utilities/Author'
+  import HeadTitle from './Utilities/HeadTitle'
+  import BigButton from './Utilities/BigButton'
   
   export default {
     name: 'landing-page',
-    components: { Author },
+    components: { Author, HeadTitle, BigButton },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
@@ -51,74 +56,29 @@
 
   body { font-family: 'Source Sans Pro', sans-serif; }
 
-  #wrapper {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-      );
+  .container {
     height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
+    padding: 30px 10px;
   }
 
-  #logo {
-    height: auto;
-    margin-bottom: 20px;
-    width: 420px;
+  .header-logo {
+    margin-bottom: 50px;
   }
 
-  main {
-    display: flex;
-    justify-content: space-between;
+  .app-title, .app-sub {
+    margin-bottom: 0;
   }
-
-  main > div { flex-basis: 50%; }
-
-  .left-side {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .welcome {
-    color: #555;
-    font-size: 23px;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    color: #2c3e50;
+  .app-title {
     font-size: 25px;
     font-weight: bold;
-    margin-bottom: 6px;
+    color: #0098ed;
   }
 
-  .title.alt {
-    font-size: 18px;
-    margin-bottom: 10px;
+  .app-sub {
+    color: #2f56af;
   }
 
-  .doc p {
-    color: black;
-    margin-bottom: 20px;
-  }
-
-  .doc button {
-    font-size: .8em;
-    cursor: pointer;
-    outline: none;
-    padding: 0.75em 1em;
-    display: inline-block;
-    color: #fff;
-    background-color: #4fc08d;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #4fc08d;
-  }
-
-  .doc button.alt {
-    color: #333;
-    background-color: transparent;
+  .main-content {
+    min-width: w;
   }
 </style>
